@@ -6,6 +6,7 @@ import Header from '../components/header';
 import {WithLocalSvg} from 'react-native-svg';
 import Announce from '../assets/icons/announce.svg';
 import Umbrella from '../assets/icons/umbrella.svg';
+import Store from '../assets/icons/store.svg';
 import dayString from '../constants/dayString';
 import CardBox from '../components/CardBox';
 
@@ -67,7 +68,29 @@ const Main: React.FC = ({navigation}) => {
             name="학생증 사용 기록"
             directLink={true}
             onPress={() => navigation.push('RentalRecord')}>
-            <Text>dd</Text>
+            <RecordList>
+              <RecordItem>
+                <RecordMain>
+                  <WithLocalSvg height={24} asset={Store} />
+                  <RecordName>매점</RecordName>
+                </RecordMain>
+                <RecordHistory>2시간 전</RecordHistory>
+              </RecordItem>
+              <RecordItem>
+                <RecordMain>
+                  <WithLocalSvg height={24} asset={Store} />
+                  <RecordName>매점</RecordName>
+                </RecordMain>
+                <RecordHistory>2시간 전</RecordHistory>
+              </RecordItem>
+              <RecordItem>
+                <RecordMain>
+                  <WithLocalSvg height={24} asset={Store} />
+                  <RecordName>매점</RecordName>
+                </RecordMain>
+                <RecordHistory>2시간 전</RecordHistory>
+              </RecordItem>
+            </RecordList>
           </CardBox>
         </ScrollView>
         <BottomNavigation />
@@ -75,6 +98,37 @@ const Main: React.FC = ({navigation}) => {
     </>
   );
 };
+
+const RecordName = styled.Text`
+  font-weight: 500;
+  font-size: 16px;
+  color: #3c4963;
+  margin-left: 8px;
+`;
+
+const RecordMain = styled.View`
+  flex-direction: row;
+  align-items: center;
+`;
+
+const RecordHistory = styled.Text`
+  font-weight: 400;
+  font-size: 14px;
+  color: #7a86a0;
+`;
+
+const RecordItem = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 43px;
+`;
+
+const RecordList = styled.View`
+  margin-top: 16px;
+  width: 100%;
+`;
+
 const ProductList = styled.ScrollView`
   margin-top: 24px;
 `;
