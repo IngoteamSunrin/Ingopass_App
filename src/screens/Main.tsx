@@ -1,8 +1,6 @@
 import React from 'react'
 import { SafeAreaView, ScrollView, Text, StatusBar } from 'react-native'
 import styled from 'styled-components/native'
-import BottomNavigation from '../components/bottomNavigation'
-import Header from '../components/header'
 import { WithLocalSvg } from 'react-native-svg'
 import Announce from '../assets/icons/announce.svg'
 import Umbrella from '../assets/icons/umbrella.svg'
