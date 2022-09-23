@@ -15,11 +15,8 @@ const Main: React.FC = ({navigation}) => {
   const day: string = dayString[date.getDay()];
   return (
     <>
-      <SafeAreaView style={{flex: 0, backgroundColor: '#fdfdff'}} />
       <AppContainer>
-        <StatusBar barStyle="dark-content" backgroundColor="#6a51ae" />
-        <Header />
-        <ScrollView style={{height: '20%', backgroundColor: '#fdfdff'}}>
+        <ScrollView style={{backgroundColor: '#fdfdff'}}>
           <AnnounceCard>
             <WithLocalSvg width={24} asset={Announce} />
             <AnnounceText>이것은 공지 테스트입니다.</AnnounceText>
@@ -93,7 +90,6 @@ const Main: React.FC = ({navigation}) => {
             </RecordList>
           </CardBox>
         </ScrollView>
-        <BottomNavigation />
       </AppContainer>
     </>
   );

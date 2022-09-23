@@ -7,10 +7,7 @@ const Products: React.FC = () => {
     <>
       <SafeAreaView style={{flex: 0, backgroundColor: '#fdfdff'}} />
       <AppContainer>
-        <StatusBar barStyle="dark-content" backgroundColor="#6a51ae" />
-        <Header />
         <ScrollView style={{height: '20%', backgroundColor: '#fdfdff'}} />
-        <BottomNavigation />
       </AppContainer>
     </>
   );

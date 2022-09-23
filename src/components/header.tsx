@@ -34,7 +34,10 @@ const Container = styled.View`
   background-color: #fdfdff;
   width: 100%;
   align-items: center;
-  padding: 0 24px;
+  padding: 0 10px;
+  left: 0;
+  top: 0;
+  margin: 0;
   flex-direction: row;
   justify-content: space-between;
 `;
