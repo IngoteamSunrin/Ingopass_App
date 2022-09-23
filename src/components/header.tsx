@@ -1,15 +1,16 @@
-import styled from 'styled-components/native';
-import {WithLocalSvg} from 'react-native-svg';
-import IngopassLogo from '../assets/appLogo.svg';
-import Settings from '../assets/icons/settings.svg';
-import Support from '../assets/icons/support.svg';
-import Notification from '../assets/icons/notification.svg';
+import styled from 'styled-components/native'
+import { WithLocalSvg } from 'react-native-svg'
+import IngopassLogo from '../assets/appLogo.svg'
+import Settings from '../assets/icons/settings.svg'
+import Support from '../assets/icons/support.svg'
+import Notification from '../assets/icons/notification.svg'
 
-import {useNavigation} from '@react-navigation/native';
-import {TouchableOpacity} from 'react-native';
+import { useNavigation } from '@react-navigation/native'
+import { TouchableOpacity } from 'react-native'
+import { StackNavigationProp } from '@react-navigation/stack'
 
 const Header: React.FC = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigationProp<any>>()
   return (
     <Container>
       <WithLocalSvg height={22} asset={IngopassLogo} />
@@ -25,9 +26,9 @@ const Header: React.FC = () => {
         </TouchableOpacity>
       </Icons>
     </Container>
-  );
-};
-export default Header;
+  )
+}
+export default Header
 
 const Container = styled.View`
   height: 56px;
@@ -40,10 +41,10 @@ const Container = styled.View`
   margin: 0;
   flex-direction: row;
   justify-content: space-between;
-`;
+`
 
 const Icons = styled.View`
   justify-content: space-between;
   flex-direction: row;
   width: 100px;
-`;
+`

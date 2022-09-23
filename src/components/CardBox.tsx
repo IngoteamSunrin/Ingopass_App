@@ -1,15 +1,15 @@
-import {WithLocalSvg} from 'react-native-svg';
-import Navigation from '../assets/icons/navigation.svg';
-import styled from 'styled-components/native';
+import { WithLocalSvg } from 'react-native-svg'
+import Navigation from 'assets/icons/navigation.svg'
+import styled from 'styled-components/native'
 
-import React from 'react';
-import {TouchableOpacity} from 'react-native';
+import React from 'react'
+import { TouchableOpacity } from 'react-native'
 
 interface CardProps {
-  name: string;
-  directLink?: boolean;
-  children: any;
-  onPress?: any;
+  name: string
+  directLink?: boolean
+  children: any
+  onPress?: any
 }
 
 const CardBox: React.FC<CardProps> = ({
@@ -32,27 +32,27 @@ const CardBox: React.FC<CardProps> = ({
       )}
       {children}
     </Container>
-  );
-};
+  )
+}
 
 const TitleWithLink = styled.View`
   width: 100%;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-`;
+`
 
 const Container = styled.View`
   padding: 28px 24px;
   background-color: #f3f5fa;
   border-radius: 20px;
   margin: 20px 24px 0 20px;
-`;
+`
 
 const CardTitle = styled.Text`
   font-weight: 600;
   font-size: 20px;
   color: #31394a;
-`;
+`
 
-export default CardBox;
+export default CardBox
