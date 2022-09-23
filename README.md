@@ -1,3 +1,3 @@
-# Ingopass_Mobile
+# Ingopass_App
 
 ## Made with Heart with React Native
