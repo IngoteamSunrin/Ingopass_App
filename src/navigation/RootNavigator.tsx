@@ -6,31 +6,40 @@ import Council from '@screens/Council'
 import Settings from '@screens/Settings'
 import Notification from '@screens/Notification'
 import Header from '@components/header'
-import BottomNavigation from './bottomNavigation'
+import BottomNavigation from './BottomNavigation'
+import { ThemeProvider } from 'styled-components'
+import { contentsDesign, softWare, infoSec, itManagement } from '../theme/theme'
 const Stack = createNativeStackNavigator()
 
 const RootNavigator: React.FC = () => {
   return (
-    <NavigationContainer>
-      <Stack.Screen
-        name="Council"
-        component={Council}
-        options={{ headerTitle: Header }}
-      />
-      <Stack.Screen
-        name="Settings"
-        component={Settings}
-        options={{ headerTitle: Header }}
-      />
+    <ThemeProvider theme={itManagement}>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Tab">
+          <Stack.Screen
+            name="Council"
+            component={Council}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Settings"
+            component={Settings}
+            options={{ headerShown: false }}
+          />
 
-      <Stack.Screen
-        name="Notification"
-        component={Notification}
-        options={{ headerTitle: Header }}
-      />
-
-      <BottomNavigation />
-    </NavigationContainer>
+          <Stack.Screen
+            name="Notification"
+            component={Notification}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Tab"
+            component={BottomNavigation}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </ThemeProvider>
   )
 }
 

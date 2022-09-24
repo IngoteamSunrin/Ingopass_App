@@ -1,5 +1,5 @@
 import { WithLocalSvg } from 'react-native-svg'
-import Navigation from 'assets/icons/navigation.svg'
+import Navigation from '@assets/icons/navigation.svg'
 import styled from 'styled-components/native'
 
 import React from 'react'
@@ -44,7 +44,7 @@ const TitleWithLink = styled.View`
 
 const Container = styled.View`
   padding: 28px 24px;
-  background-color: #f3f5fa;
+  background-color: ${({ theme }) => theme.color.grade2};
   border-radius: 20px;
   margin: 20px 24px 0 20px;
 `
@@ -52,7 +52,7 @@ const Container = styled.View`
 const CardTitle = styled.Text`
   font-weight: 600;
   font-size: 20px;
-  color: #31394a;
+  color: ${({ theme }) => theme.color.grade8};
 `
 
 export default CardBox
