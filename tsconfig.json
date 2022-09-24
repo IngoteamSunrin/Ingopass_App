@@ -4,15 +4,11 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      // This needs to be mirrored in babel.config.js
-      // Components is a directory with sub directories
-      "components/*": ["src/components/*"],
-
-      // We want to expose the exports of the buttons index file
-      "assets/*": ["src/assets/*"],
-      "screens/*": ["src/screens/*"],
-      "navigation/*": ["src/navigation/*"],
-      "store/*": ["src/store/*"],
+      "@/*": ["./*"],
+      "@components/*": ["components/*"],
+      "@screens/*": ["screens/*"],
+      "@navigation/*": ["navigation/*"],
+      "@assets/*": ["assets/*"],
 
     },
     "skipLibCheck": true,

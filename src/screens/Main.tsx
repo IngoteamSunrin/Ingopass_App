@@ -1,8 +1,6 @@
 import React from 'react'
 import { SafeAreaView, ScrollView, Text, StatusBar } from 'react-native'
 import styled from 'styled-components/native'
-import BottomNavigation from '../components/bottomNavigation'
-import Header from '../components/header'
 import { WithLocalSvg } from 'react-native-svg'
 import Announce from '../assets/icons/announce.svg'
 import Umbrella from '../assets/icons/umbrella.svg'
@@ -10,7 +8,7 @@ import Store from '../assets/icons/store.svg'
 import dayString from '../constants/dayString'
 import CardBox from '../components/CardBox'
 
-const Main: React.FC = ({ navigation }) => {
+const Main = ({ navigation }) => {
   const date: Date = new Date()
   const day: string = dayString[date.getDay()]
   return (
@@ -64,7 +62,7 @@ const Main: React.FC = ({ navigation }) => {
           <CardBox
             name="학생증 사용 기록"
             directLink={true}
-            onPress={() => navigation.push('RentalRecord')}>
+            onPress={() => RootNavigation.navigate('RentalRecord')}>
             <RecordList>
               <RecordItem>
                 <RecordMain>
@@ -98,7 +96,7 @@ const Main: React.FC = ({ navigation }) => {
 const RecordName = styled.Text`
   font-weight: 500;
   font-size: 16px;
-  color: #3c4963;
+  color: ${({ theme }) => theme.color.grade7};
   margin-left: 8px;
 `
 
@@ -110,7 +108,7 @@ const RecordMain = styled.View`
 const RecordHistory = styled.Text`
   font-weight: 400;
   font-size: 14px;
-  color: #7a86a0;
+  color: ${({ theme }) => theme.color.grade5};
 `
 
 const RecordItem = styled.View`
@@ -133,7 +131,7 @@ const ProductName = styled.Text`
   font-weight: 500;
   font-size: 15px;
   margin-top: 4px;
-  color: #3c4963;
+  color: background-color: ${({ theme }) => theme.color.grade7};
 `
 
 const ProductRemainTime = styled.Text`
@@ -144,7 +142,7 @@ const ProductRemainTime = styled.Text`
 `
 
 const ProductItem = styled.View`
-  background-color: #e9edf6;
+  background-color: ${({ theme }) => theme.color.grade3};
   align-items: center;
   justify-content: center;
   width: 112px;
@@ -155,20 +153,20 @@ const ProductItem = styled.View`
 
 const AppContainer = styled.SafeAreaView`
   height: 100%;
-  background-color: #e9edf6;
+  background-color: ${({ theme }) => theme.color.grade1};
   flex: 1;
 `
 
 const AnnounceText = styled.Text`
   font-weight: 500;
   font-size: 15px;
-  color: #2a509d;
+  color: ${({ theme }) => theme.color.highlight};
   margin-left: 10px;
 `
 
 const AnnounceCard = styled.View`
   padding: 16px 18px;
-  background-color: #f3f5fa;
+  background-color: ${({ theme }) => theme.color.grade2};
   border-radius: 20px;
   margin: 20px 24px 0 20px;
   flex-direction: row;
@@ -178,14 +176,14 @@ const AnnounceCard = styled.View`
 const CardSubtitle = styled.Text`
   font-weight: 400;
   font-size: 15px;
-  color: #7a86a0;
+  color: ${({ theme }) => theme.color.grade5};
   margin-top: 20px;
 `
 
 const CardContent = styled.Text`
   font-weight: 500;
   font-size: 15px;
-  color: #3c4963;
+  color: ${({ theme }) => theme.color.grade7};
   margin-top: 12px;
   width: 93%;
   line-height: 19px;
