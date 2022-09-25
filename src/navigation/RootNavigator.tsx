@@ -5,7 +5,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Council from '@screens/Council'
 import Settings from '@screens/Settings'
 import Notification from '@screens/Notification'
-import Header from '@components/header'
 import BottomNavigation from './BottomNavigation'
 import { ThemeProvider } from 'styled-components'
 import { contentsDesign, softWare, infoSec, itManagement } from '../theme/theme'
@@ -13,7 +12,7 @@ const Stack = createNativeStackNavigator()
 
 const RootNavigator: React.FC = () => {
   return (
-    <ThemeProvider theme={itManagement}>
+    <ThemeProvider theme={contentsDesign}>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Tab">
           <Stack.Screen

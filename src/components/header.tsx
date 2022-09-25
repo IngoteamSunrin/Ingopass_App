@@ -99,7 +99,7 @@ const Container = styled.View`
   background-color: ${({ theme }) => theme.color.grade1};
   width: 100%;
   align-items: center;
-  padding: 0 10px;
+  padding: 0 24px;
   left: 0;
   top: 0;
   margin: 0;

@@ -154,7 +154,6 @@ const ProductItem = styled.View`
 const AppContainer = styled.SafeAreaView`
   height: 100%;
   background-color: ${({ theme }) => theme.color.grade1};
-  flex: 1;
 `
 
 const AnnounceText = styled.Text`

@@ -1,4 +1,4 @@
-import styled, { withTheme } from 'styled-components/native'
+import styled, { DefaultTheme, withTheme } from 'styled-components/native'
 import { WithLocalSvg } from 'react-native-svg'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { StatusBar, TouchableOpacity } from 'react-native'
@@ -14,15 +14,14 @@ import MyInfo from '@screens/MyInfo'
 import Products from '@screens/Products'
 import Header from '@components/header'
 import { ImageSourcePropType } from 'react-native'
-import { navigationRef } from './RootNavigation'
-import { SafeAreaProvider } from 'react-native-safe-area-context'
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 
 interface ItemProps {
   asset: ImageSourcePropType
   name: string
 }
 
-function NavItem(props: ItemProps) {
+const NavItem = (props: ItemProps) => {
   return (
     <ItemContainer>
       <WithLocalSvg height={26} asset={props.asset} />
@@ -31,7 +30,7 @@ function NavItem(props: ItemProps) {
   )
 }
 
-function NavItemSelected(props: ItemProps) {
+const NavItemSelected = (props: ItemProps) => {
   return (
     <ItemContainer>
       <WithLocalSvg height={26} asset={props.asset} />
@@ -40,7 +39,16 @@ function NavItemSelected(props: ItemProps) {
   )
 }
 
-const BottomNavigation: React.FC = ({ theme }) => {
+interface ThemeProps {
+  theme: {
+    color: {
+      [key: string]: string
+    }
+  }
+}
+
+const BottomNavigation: React.FC<ThemeProps> = (props) => {
+  const { theme } = props
   const Tab = createBottomTabNavigator()
   const devicePaths = ['Products', 'RecordStatus']
   const homePaths = ['Card', 'Main']
@@ -80,15 +88,21 @@ const BottomNavigation: React.FC = ({ theme }) => {
             {
               height: '12%',
               backgroundColor: theme.color.grade3,
-              border: 'none',
+              borderTopWidth: 0,
             },
             ,
           ],
+          indicatorStyle: {
+            width: 0,
+            height: 0,
+            elevation: 0,
+          },
           style: {
             width: '100%',
             justifyContent: 'space-evenly',
             alignItems: 'center',
             flexDirection: 'row',
+            border: 'none',
           },
           tabBarLabelStyle: {
             fontWeight: '400',
@@ -105,10 +119,17 @@ const BottomNavigation: React.FC = ({ theme }) => {
           tabBarActiveTintColor: theme.color.grade6,
           tabBarInactiveTintColor: theme.color.grade5,
           tabBarShowLabel: false,
-          headerTitle: Header,
+          header: () => (
+            <>
+              <SafeAreaView
+                style={{ backgroundColor: theme.color.grade1, height: 56 }}>
+                <Header />
+              </SafeAreaView>
+            </>
+          ),
           headerStyle: {
-            shadowColor: 'transparent', // this covers iOS
-            elevation: 0, // this covers Androids
+            flex: 1,
+            textAlign: 'center',
           },
         })}>
         {/* {devicePaths.filter(item => item === route.name).length !== 0 ? (
@@ -163,13 +184,13 @@ const ItemContainer = styled.View`
 `
 
 const ItemName = styled.Text`
-  color: ${({ theme }) => theme.color.grade5};
+  color: ${({ theme }: ThemeProps) => theme.color.grade5};
   font-weight: 400;
   font-size: 12px;
 `
 
 const ItemNameSelected = styled.Text`
-  color: ${({ theme }) => theme.color.grade7};
+  color: ${({ theme }: ThemeProps) => theme.color.grade7};
   font-weight: 500;
   font-size: 12px;
 `
