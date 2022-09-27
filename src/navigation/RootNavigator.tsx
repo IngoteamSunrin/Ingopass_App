@@ -8,9 +8,25 @@ import Notification from '@screens/Notification'
 import BottomNavigation from './BottomNavigation'
 import { ThemeProvider } from 'styled-components'
 import { contentsDesign, softWare, infoSec, itManagement } from '../theme/theme'
+import changeNavigationBarColor from 'react-native-navigation-bar-color'
+import { useEffect } from 'react'
 const Stack = createNativeStackNavigator()
 
 const RootNavigator: React.FC = () => {
+  const setNavigationColor = (color) => {
+    changeNavigationBarColor(color)
+  }
+  const testSetTranslucent = () => {
+    changeNavigationBarColor('translucent', false)
+  }
+
+  const testSetTransparent = () => {
+    changeNavigationBarColor('transparent', true)
+  }
+
+  useEffect(() => {
+    testSetTransparent()
+  }, [])
   return (
     <ThemeProvider theme={contentsDesign}>
       <NavigationContainer>

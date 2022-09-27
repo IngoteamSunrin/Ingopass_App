@@ -12,6 +12,7 @@ import com.facebook.soloader.SoLoader;
 import com.ingopass_frontend.newarchitecture.MainApplicationReactNativeHost;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+import com.thebylito.navigationbarcolor.NavigationBarColorPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -26,6 +27,7 @@ public class MainApplication extends Application implements ReactApplication {
         protected List<ReactPackage> getPackages() {
           @SuppressWarnings("UnnecessaryLocalVariable")
           List<ReactPackage> packages = new PackageList(this).getPackages();
+          packages.add(new NavigationBarColorPackage());
           // Packages that cannot be autolinked yet can be added manually here, for example:
           // packages.add(new MyReactNativePackage());
           return packages;

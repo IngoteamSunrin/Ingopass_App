@@ -15,6 +15,8 @@ import Products from '@screens/Products'
 import Header from '@components/header'
 import { ImageSourcePropType } from 'react-native'
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
+import { useEffect } from 'react'
+import changeNavigationBarColor from 'react-native-navigation-bar-color'
 
 interface ItemProps {
   asset: ImageSourcePropType
@@ -53,93 +55,111 @@ const BottomNavigation: React.FC<ThemeProps> = (props) => {
   const devicePaths = ['Products', 'RecordStatus']
   const homePaths = ['Card', 'Main']
   const myInfoPaths = ['MyInfo', 'RentalRecord']
+
+  const setNavigationColor = (color) => {
+    changeNavigationBarColor(color)
+  }
+  const testSetTranslucent = () => {
+    changeNavigationBarColor('translucent', false)
+  }
+
+  const testSetTransparent = () => {
+    changeNavigationBarColor('transparent', true)
+  }
+
+  useEffect(() => {
+    testSetTransparent()
+  }, [])
+
   return (
-    <SafeAreaProvider>
-      <Tab.Navigator
-        initialRouteName="Main"
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            if (route.name === 'Main') {
-              return focused ? (
-                <CardItem>
-                  <WithLocalSvg height={26} asset={CardIcon} />
-                </CardItem>
-              ) : (
-                <NavItem name="홈" asset={Home} />
-              )
-            }
+    <>
+      <StatusBar backgroundColor={theme.color.grade1} barStyle="dark-content" />
+      <SafeAreaProvider>
+        <Tab.Navigator
+          initialRouteName="Main"
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              if (route.name === 'Main') {
+                return focused ? (
+                  <CardItem>
+                    <WithLocalSvg height={26} asset={CardIcon} />
+                  </CardItem>
+                ) : (
+                  <NavItem name="홈" asset={Home} />
+                )
+              }
 
-            if (route.name === 'Products') {
-              return focused ? (
-                <NavItemSelected name="물품" asset={DeviceSelected} />
-              ) : (
-                <NavItem name="물품" asset={Device} />
-              )
-            }
-            if (route.name === 'MyInfo') {
-              return focused ? (
-                <NavItemSelected name="내 정보" asset={PersonSelected} />
-              ) : (
-                <NavItem name="내 정보" asset={Person} />
-              )
-            }
-          },
-          tabBarStyle: [
-            {
-              height: '12%',
-              backgroundColor: theme.color.grade3,
-              borderTopWidth: 0,
+              if (route.name === 'Products') {
+                return focused ? (
+                  <NavItemSelected name="물품" asset={DeviceSelected} />
+                ) : (
+                  <NavItem name="물품" asset={Device} />
+                )
+              }
+              if (route.name === 'MyInfo') {
+                return focused ? (
+                  <NavItemSelected name="내 정보" asset={PersonSelected} />
+                ) : (
+                  <NavItem name="내 정보" asset={Person} />
+                )
+              }
             },
-            ,
-          ],
-          indicatorStyle: {
-            width: 0,
-            height: 0,
-            elevation: 0,
-          },
-          style: {
-            width: '100%',
-            justifyContent: 'space-evenly',
-            alignItems: 'center',
-            flexDirection: 'row',
-            border: 'none',
-          },
-          tabBarLabelStyle: {
-            fontWeight: '400',
-            margin: 0,
-            padding: 0,
-            width: 52,
-          },
-          tabBarItemStyle: {
-            width: 52,
-            margin: 0,
-            padding: 0,
-          },
-          labelStyle: { margin: 0, padding: 0 },
-          tabBarActiveTintColor: theme.color.grade6,
-          tabBarInactiveTintColor: theme.color.grade5,
-          tabBarShowLabel: false,
-          header: () => (
-            <>
-              <SafeAreaView
-                style={{ backgroundColor: theme.color.grade1, height: 56 }}>
-                <Header />
-              </SafeAreaView>
-            </>
-          ),
-          headerStyle: {
-            flex: 1,
-            textAlign: 'center',
-          },
-        })}>
-        {/* {devicePaths.filter(item => item === route.name).length !== 0 ? (
+            tabBarStyle: [
+              {
+                height: 100,
+                backgroundColor: theme.color.grade3,
+                borderTopWidth: 0,
+              },
+              ,
+            ],
+            indicatorStyle: {
+              width: 0,
+              height: 0,
+              elevation: 0,
+            },
+            style: {
+              width: '100%',
+              justifyContent: 'space-evenly',
+              alignItems: 'center',
+              flexDirection: 'row',
+              border: 'none',
+            },
+            tabBarLabelStyle: {
+              fontWeight: '400',
+              margin: 0,
+              padding: 0,
+              width: 52,
+            },
+            tabBarItemStyle: {
+              width: 52,
+              margin: 0,
+              padding: 0,
+            },
+            labelStyle: { margin: 0, padding: 0 },
+            tabBarActiveTintColor: theme.color.grade6,
+            tabBarInactiveTintColor: theme.color.grade5,
+            tabBarShowLabel: false,
+            header: () => (
+              <>
+                <SafeAreaView
+                  style={{ backgroundColor: theme.color.grade1, height: 56 }}>
+                  <Header />
+                </SafeAreaView>
+              </>
+            ),
+            headerStyle: {
+              flex: 1,
+              textAlign: 'center',
+            },
+          })}>
+          {/* {devicePaths.filter(item => item === route.name).length !== 0 ? (
           //   <NavItemSelected name="물품" asset={DeviceSelected} /> */}
-        <Tab.Screen name="Products" component={Products} />
-        <Tab.Screen name="Main" component={Main} />
+          <Tab.Screen name="Products" component={Products} />
+          <Tab.Screen name="Main" component={Main} />
 
-        <Tab.Screen name="MyInfo" component={MyInfo} />
+          <Tab.Screen name="MyInfo" component={MyInfo} />
 
-        {/* ) : (
+          {/* ) : (
           <TouchableOpacity onPress={() => navigation.navigate('Products')}>
             <NavItem name="물품" asset={Device} />
           </TouchableOpacity>
@@ -161,8 +181,9 @@ const BottomNavigation: React.FC<ThemeProps> = (props) => {
             <NavItem name="내 정보" asset={Person} />
           </TouchableOpacity>
         )} */}
-      </Tab.Navigator>
-    </SafeAreaProvider>
+        </Tab.Navigator>
+      </SafeAreaProvider>
+    </>
   )
 }
 export default withTheme(BottomNavigation)

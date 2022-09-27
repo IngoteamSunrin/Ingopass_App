@@ -12,84 +12,80 @@ const Main = ({ navigation }) => {
   const date: Date = new Date()
   const day: string = dayString[date.getDay()]
   return (
-    <>
-      <AppContainer>
-        <ScrollView style={{ backgroundColor: '#fdfdff' }}>
-          <AnnounceCard>
-            <WithLocalSvg width={24} asset={Announce} />
-            <AnnounceText>이것은 공지 테스트입니다.</AnnounceText>
-          </AnnounceCard>
-          <CardBox name={'급식'}>
-            <CardSubtitle>
-              {date.getMonth() + 1}월 {date.getDate()}일 {day}
-            </CardSubtitle>
-            <CardContent>
-              차조밥, 부대찌개, 쭈돈불고기, 고르곤졸라피자, 석박지, 깻잎무쌈
-            </CardContent>
-          </CardBox>
-          <CardBox
-            name="대여 상태"
-            directLink={true}
-            onPress={() => navigation.push('RentalStatus')}>
-            <ProductList horizontal={true}>
-              <ProductItem>
-                <WithLocalSvg height={44} asset={Umbrella} />
-                <ProductName>우산</ProductName>
-                <ProductRemainTime>5분 남음</ProductRemainTime>
-              </ProductItem>
-              <ProductItem>
-                <WithLocalSvg height={44} asset={Umbrella} />
-                <ProductName>우산</ProductName>
-                <ProductRemainTime>5분 남음</ProductRemainTime>
-              </ProductItem>
-              <ProductItem>
-                <WithLocalSvg height={44} asset={Umbrella} />
-                <ProductName>우산</ProductName>
-                <ProductRemainTime>5분 남음</ProductRemainTime>
-              </ProductItem>
-              <ProductItem>
-                <WithLocalSvg height={44} asset={Umbrella} />
-                <ProductName>우산</ProductName>
-                <ProductRemainTime>5분 남음</ProductRemainTime>
-              </ProductItem>
-              <ProductItem>
-                <WithLocalSvg height={44} asset={Umbrella} />
-                <ProductName>우산</ProductName>
-                <ProductRemainTime>5분 남음</ProductRemainTime>
-              </ProductItem>
-            </ProductList>
-          </CardBox>
-          <CardBox
-            name="학생증 사용 기록"
-            directLink={true}
-            onPress={() => RootNavigation.navigate('RentalRecord')}>
-            <RecordList>
-              <RecordItem>
-                <RecordMain>
-                  <WithLocalSvg height={24} asset={Store} />
-                  <RecordName>매점</RecordName>
-                </RecordMain>
-                <RecordHistory>2시간 전</RecordHistory>
-              </RecordItem>
-              <RecordItem>
-                <RecordMain>
-                  <WithLocalSvg height={24} asset={Store} />
-                  <RecordName>매점</RecordName>
-                </RecordMain>
-                <RecordHistory>2시간 전</RecordHistory>
-              </RecordItem>
-              <RecordItem>
-                <RecordMain>
-                  <WithLocalSvg height={24} asset={Store} />
-                  <RecordName>매점</RecordName>
-                </RecordMain>
-                <RecordHistory>2시간 전</RecordHistory>
-              </RecordItem>
-            </RecordList>
-          </CardBox>
-        </ScrollView>
-      </AppContainer>
-    </>
+    <ScrollView style={{ backgroundColor: '#fdfdff', marginTop: 20 }}>
+      <AnnounceCard>
+        <WithLocalSvg width={24} asset={Announce} />
+        <AnnounceText>이것은 공지 테스트입니다.</AnnounceText>
+      </AnnounceCard>
+      <CardBox name={'급식'}>
+        <CardSubtitle>
+          {date.getMonth() + 1}월 {date.getDate()}일 {day}
+        </CardSubtitle>
+        <CardContent>
+          차조밥, 부대찌개, 쭈돈불고기, 고르곤졸라피자, 석박지, 깻잎무쌈
+        </CardContent>
+      </CardBox>
+      <CardBox
+        name="대여 상태"
+        directLink={true}
+        onPress={() => navigation.push('RentalStatus')}>
+        <ProductList horizontal={true}>
+          <ProductItem>
+            <WithLocalSvg height={44} asset={Umbrella} />
+            <ProductName>우산</ProductName>
+            <ProductRemainTime>5분 남음</ProductRemainTime>
+          </ProductItem>
+          <ProductItem>
+            <WithLocalSvg height={44} asset={Umbrella} />
+            <ProductName>우산</ProductName>
+            <ProductRemainTime>5분 남음</ProductRemainTime>
+          </ProductItem>
+          <ProductItem>
+            <WithLocalSvg height={44} asset={Umbrella} />
+            <ProductName>우산</ProductName>
+            <ProductRemainTime>5분 남음</ProductRemainTime>
+          </ProductItem>
+          <ProductItem>
+            <WithLocalSvg height={44} asset={Umbrella} />
+            <ProductName>우산</ProductName>
+            <ProductRemainTime>5분 남음</ProductRemainTime>
+          </ProductItem>
+          <ProductItem>
+            <WithLocalSvg height={44} asset={Umbrella} />
+            <ProductName>우산</ProductName>
+            <ProductRemainTime>5분 남음</ProductRemainTime>
+          </ProductItem>
+        </ProductList>
+      </CardBox>
+      <CardBox
+        name="학생증 사용 기록"
+        directLink={true}
+        onPress={() => RootNavigation.navigate('RentalRecord')}>
+        <RecordList>
+          <RecordItem>
+            <RecordMain>
+              <WithLocalSvg height={24} asset={Store} />
+              <RecordName>매점</RecordName>
+            </RecordMain>
+            <RecordHistory>2시간 전</RecordHistory>
+          </RecordItem>
+          <RecordItem>
+            <RecordMain>
+              <WithLocalSvg height={24} asset={Store} />
+              <RecordName>매점</RecordName>
+            </RecordMain>
+            <RecordHistory>2시간 전</RecordHistory>
+          </RecordItem>
+          <RecordItem>
+            <RecordMain>
+              <WithLocalSvg height={24} asset={Store} />
+              <RecordName>매점</RecordName>
+            </RecordMain>
+            <RecordHistory>2시간 전</RecordHistory>
+          </RecordItem>
+        </RecordList>
+      </CardBox>
+    </ScrollView>
   )
 }
 
@@ -131,7 +127,7 @@ const ProductName = styled.Text`
   font-weight: 500;
   font-size: 15px;
   margin-top: 4px;
-  color: background-color: ${({ theme }) => theme.color.grade7};
+  color: ${({ theme }) => theme.color.grade7};
 `
 
 const ProductRemainTime = styled.Text`
