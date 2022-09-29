@@ -6,6 +6,8 @@ import Support from '../assets/icons/support.svg'
 import Notification from '../assets/icons/notification.svg'
 import Back from '../assets/icons/back.svg'
 
+import { Text } from 'react-native'
+
 import {
   useNavigation,
   useNavigationContainerRef,
@@ -15,6 +17,9 @@ import { TouchableOpacity, View, SafeAreaView, StatusBar } from 'react-native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import Navigation from '@assets/icons/navigation.svg'
 import * as RootNavigation from '../navigation/RootNavigation'
+import withTheme from 'styled-components/native'
+import themeState from '@/store/theme'
+import { useRecoilState, useRecoilValue } from 'recoil'
 
 const TextWithActions = ['MyInfo', 'Products']
 const IconWith = ['MyInfo', 'Products', 'Main']
@@ -31,6 +36,7 @@ const routeString = {
 }
 
 const Header = () => {
+  const [theme, setTheme] = useRecoilState(themeState)
   const route = useRoute()
   const navigation = useNavigation()
   return (
@@ -41,24 +47,24 @@ const Header = () => {
           0 ? (
             <HeaderTitle>{routeString[route.name]}</HeaderTitle>
           ) : (
-            <WithLocalSvg height={22} asset={IngopassLogo} />
+            <IngopassLogo height={22} fill={theme.color.grade8} />
           )}
           <Icons>
             <TouchableOpacity onPress={() => navigation.push('Settings')}>
-              <WithLocalSvg height={22} asset={Settings} />
+              <Settings height={22} fill={theme.color.grade5} />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.push('Council')}>
-              <WithLocalSvg height={22} asset={Support} />
+              <Support height={22} fill={theme.color.grade5} />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.push('Notification')}>
-              <WithLocalSvg height={22} asset={Notification} />
+              <Notification height={22} fill={theme.color.grade5} />
             </TouchableOpacity>
           </Icons>
         </Container>
       ) : (
         <BackContainer>
           <TouchableOpacity onPress={() => navigation.goBack()}>
-            <WithLocalSvg height={22} asset={Back} />
+            <Back height={22} fill={theme.color.grade5} />
           </TouchableOpacity>
           <HeaderTitleMargin>{routeString[route.name]}</HeaderTitleMargin>
         </BackContainer>

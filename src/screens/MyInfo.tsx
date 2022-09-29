@@ -4,12 +4,14 @@ import styled from 'styled-components/native'
 import { WithLocalSvg } from 'react-native-svg'
 import Announce from '../assets/icons/announce.svg'
 import Umbrella from '../assets/icons/umbrella.svg'
-import UmbrellaSecond from '../assets/icons/umbrella_second.svg'
 import Store from '../assets/icons/store.svg'
 import dayString from '../constants/dayString'
 import CardBox from '../components/CardBox'
+import { useRecoilValue } from 'recoil'
+import themeState from '@/store/theme'
 
 const MyInfo = ({ navigation }) => {
+  const theme = useRecoilValue(themeState)
   const date: Date = new Date()
   const day: string = dayString[date.getDay()]
   return (
@@ -24,21 +26,21 @@ const MyInfo = ({ navigation }) => {
         <RecordList>
           <RecordItem>
             <RecordMain>
-              <WithLocalSvg height={24} asset={UmbrellaSecond} />
+              <Umbrella height={24} fill={theme.color.grade7} />
               <RecordName>우산</RecordName>
             </RecordMain>
             <RecordHistory>2시간 전</RecordHistory>
           </RecordItem>
           <RecordItem>
             <RecordMain>
-              <WithLocalSvg height={24} asset={UmbrellaSecond} />
+              <Umbrella height={24} fill={theme.color.grade7} />
               <RecordName>우산</RecordName>
             </RecordMain>
             <RecordHistory>2시간 전</RecordHistory>
           </RecordItem>
           <RecordItem>
             <RecordMain>
-              <WithLocalSvg height={24} asset={UmbrellaSecond} />
+              <Umbrella height={24} fill={theme.color.grade7} />
               <RecordName>우산</RecordName>
             </RecordMain>
             <RecordHistory>2시간 전</RecordHistory>

@@ -1,27 +1,56 @@
 import React from 'react'
-import { SafeAreaView, ScrollView, Text, StatusBar } from 'react-native'
-import styled, { DefaultTheme, withTheme } from 'styled-components/native'
-import { WithLocalSvg } from 'react-native-svg'
-import Announce from '../assets/icons/announce.svg'
-import Umbrella from '../assets/icons/umbrella.svg'
-import Store from '../assets/icons/store.svg'
+import {
+  SafeAreaView,
+  ScrollView,
+  Text,
+  StatusBar,
+  Button,
+  Pressable,
+} from 'react-native'
+import styled from 'styled-components/native'
 import dayString from '../constants/dayString'
-import CardBox from '../components/CardBox'
-import Header from '@components/header'
+import { useRecoilState } from 'recoil'
+import themeState from '@/store/theme'
+import { contentsDesign, infoSec, itManagement, softWare } from '../theme/theme'
+import Header from '@/components/header'
 
-const Settings = ({ theme }: { theme: any }) => {
+const Settings = () => {
   const date: Date = new Date()
+  const [theme, setTheme] = useRecoilState(themeState)
   const day: string = dayString[date.getDay()]
   return (
-    <>
-      <AppContainer>
-        <Header />
-        <ScrollView
-          style={{ backgroundColor: theme.color.grade1 }}></ScrollView>
-      </AppContainer>
-    </>
+    <AppContainer>
+      <Header />
+      <ScrollView style={{ backgroundColor: theme.color.grade1 }}>
+        <ChangeButton onPress={() => setTheme(contentsDesign)}>
+          <TextH>콘텐츠디자인과 테마 적용하기</TextH>
+        </ChangeButton>
+        <ChangeButton onPress={() => setTheme(itManagement)}>
+          <TextH>IT경영과 테마 적용하기</TextH>
+        </ChangeButton>
+        <ChangeButton onPress={() => setTheme(softWare)}>
+          <TextH>소프트웨어과 테마 적용하기</TextH>
+        </ChangeButton>
+        <ChangeButton onPress={() => setTheme(infoSec)}>
+          <TextH>정보보호과 테마 적용하기</TextH>
+        </ChangeButton>
+      </ScrollView>
+    </AppContainer>
   )
 }
+
+const TextH = styled.Text`
+  font-size: 20px;
+  text-align: center;
+  color: ${({ theme }) => theme.color.grade5};
+`
+
+const ChangeButton = styled.Pressable`
+  margin: 10px;
+  background-color: ${({ theme }) => theme.color.grade2};
+  border-radius: 20px;
+  padding: 24px 20px;
+`
 
 const RecordName = styled.Text`
   font-weight: 500;
@@ -119,4 +148,4 @@ const CardContent = styled.Text`
   line-height: 19px;
 `
 
-export default withTheme(Settings)
+export default Settings

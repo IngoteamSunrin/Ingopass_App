@@ -8,18 +8,16 @@ import Store from '../assets/icons/store.svg'
 import dayString from '../constants/dayString'
 import CardBox from '../components/CardBox'
 import Header from '@components/header'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 const Council = ({ theme }: { theme: any }) => {
   const date: Date = new Date()
   const day: string = dayString[date.getDay()]
   return (
-    <>
-      <AppContainer>
-        <Header />
-        <ScrollView
-          style={{ backgroundColor: theme.color.grade1 }}></ScrollView>
-      </AppContainer>
-    </>
+    <AppContainer>
+      <Header />
+      <ScrollView style={{ backgroundColor: theme.color.grade1 }}></ScrollView>
+    </AppContainer>
   )
 }
 

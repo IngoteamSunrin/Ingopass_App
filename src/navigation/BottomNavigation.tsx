@@ -17,6 +17,8 @@ import { ImageSourcePropType } from 'react-native'
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 import { useEffect } from 'react'
 import changeNavigationBarColor from 'react-native-navigation-bar-color'
+import { useRecoilValue } from 'recoil'
+import themeState from '@/store/theme'
 
 interface ItemProps {
   asset: ImageSourcePropType
@@ -26,7 +28,6 @@ interface ItemProps {
 const NavItem = (props: ItemProps) => {
   return (
     <ItemContainer>
-      <WithLocalSvg height={26} asset={props.asset} />
       <ItemName>{props.name}</ItemName>
     </ItemContainer>
   )
@@ -49,27 +50,12 @@ interface ThemeProps {
   }
 }
 
-const BottomNavigation: React.FC<ThemeProps> = (props) => {
-  const { theme } = props
+const BottomNavigation: React.FC = () => {
+  const theme = useRecoilValue(themeState)
   const Tab = createBottomTabNavigator()
   const devicePaths = ['Products', 'RecordStatus']
   const homePaths = ['Card', 'Main']
   const myInfoPaths = ['MyInfo', 'RentalRecord']
-
-  const setNavigationColor = (color) => {
-    changeNavigationBarColor(color)
-  }
-  const testSetTranslucent = () => {
-    changeNavigationBarColor('translucent', false)
-  }
-
-  const testSetTransparent = () => {
-    changeNavigationBarColor('transparent', true)
-  }
-
-  useEffect(() => {
-    testSetTransparent()
-  }, [])
 
   return (
     <>
@@ -82,25 +68,40 @@ const BottomNavigation: React.FC<ThemeProps> = (props) => {
               if (route.name === 'Main') {
                 return focused ? (
                   <CardItem>
-                    <WithLocalSvg height={26} asset={CardIcon} />
+                    <CardIcon height={26} fill={theme.color.grade7} />
                   </CardItem>
                 ) : (
-                  <NavItem name="홈" asset={Home} />
+                  <ItemContainer>
+                    <Home height={26} fill={theme.color.grade5} />
+                    <ItemName>홈</ItemName>
+                  </ItemContainer>
                 )
               }
 
               if (route.name === 'Products') {
                 return focused ? (
-                  <NavItemSelected name="물품" asset={DeviceSelected} />
+                  <ItemContainer>
+                    <Device height={26} fill={theme.color.grade7} />
+                    <ItemNameSelected>물품</ItemNameSelected>
+                  </ItemContainer>
                 ) : (
-                  <NavItem name="물품" asset={Device} />
+                  <ItemContainer>
+                    <Device height={26} fill={theme.color.grade5} />
+                    <ItemName>물품</ItemName>
+                  </ItemContainer>
                 )
               }
               if (route.name === 'MyInfo') {
                 return focused ? (
-                  <NavItemSelected name="내 정보" asset={PersonSelected} />
+                  <ItemContainer>
+                    <PersonSelected height={26} fill={theme.color.grade7} />
+                    <ItemNameSelected>내 정보</ItemNameSelected>
+                  </ItemContainer>
                 ) : (
-                  <NavItem name="내 정보" asset={Person} />
+                  <ItemContainer>
+                    <Person height={26} fill={theme.color.grade5} />
+                    <ItemName>내 정보</ItemName>
+                  </ItemContainer>
                 )
               }
             },
@@ -192,7 +193,7 @@ const CardItem = styled.View`
   width: 52px;
   height: 52px;
   border-radius: 26px;
-  background-color: #dae1ee;
+  background-color: ${({ theme }: ThemeProps) => theme.color.grade4};
   display: flex;
   justify-content: center;
   align-items: center;

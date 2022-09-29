@@ -4,6 +4,8 @@ import styled from 'styled-components/native'
 
 import React from 'react'
 import { TouchableOpacity } from 'react-native'
+import { useRecoilValue } from 'recoil'
+import themeState from '@/store/theme'
 
 interface CardProps {
   name: string
@@ -18,13 +20,14 @@ const CardBox: React.FC<CardProps> = ({
   children,
   onPress,
 }) => {
+  const theme = useRecoilValue(themeState)
   return (
     <Container>
       {directLink ? (
         <TitleWithLink>
           <CardTitle>{name}</CardTitle>
           <TouchableOpacity onPress={onPress}>
-            <WithLocalSvg width={22} asset={Navigation} />
+            <Navigation width={22} fill={theme.color.grade5} />
           </TouchableOpacity>
         </TitleWithLink>
       ) : (

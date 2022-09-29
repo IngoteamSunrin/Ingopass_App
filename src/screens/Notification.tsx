@@ -13,13 +13,10 @@ const Council = ({ theme }: { theme: any }) => {
   const date: Date = new Date()
   const day: string = dayString[date.getDay()]
   return (
-    <>
-      <AppContainer>
-        <Header />
-        <ScrollView
-          style={{ backgroundColor: theme.color.grade1 }}></ScrollView>
-      </AppContainer>
-    </>
+    <AppContainer>
+      <Header />
+      <ScrollView style={{ backgroundColor: theme.color.grade1 }}></ScrollView>
+    </AppContainer>
   )
 }
 

@@ -1,14 +1,15 @@
 import React from 'react'
 import { SafeAreaView, ScrollView, Text, StatusBar } from 'react-native'
 import styled from 'styled-components/native'
-import { WithLocalSvg } from 'react-native-svg'
-import Announce from '../assets/icons/announce.svg'
 import Umbrella from '../assets/icons/umbrella.svg'
 import Store from '../assets/icons/store.svg'
 import dayString from '../constants/dayString'
 import CardBox from '../components/CardBox'
+import { useRecoilValue } from 'recoil'
+import themeState from '@/store/theme'
 
 const Products = ({ navigation }) => {
+  const theme = useRecoilValue(themeState)
   const date: Date = new Date()
   const day: string = dayString[date.getDay()]
   return (
@@ -19,27 +20,27 @@ const Products = ({ navigation }) => {
         onPress={() => navigation.push('RentalStatus')}>
         <ProductList horizontal={true}>
           <ProductItem>
-            <WithLocalSvg width={44} asset={Umbrella} />
+            <Umbrella height={44} fill={theme.color.grade7} />
             <ProductName>우산</ProductName>
             <ProductRemainTime>5분 남음</ProductRemainTime>
           </ProductItem>
           <ProductItem>
-            <WithLocalSvg height={44} asset={Umbrella} />
+            <Umbrella height={44} fill={theme.color.grade7} />
             <ProductName>우산</ProductName>
             <ProductRemainTime>5분 남음</ProductRemainTime>
           </ProductItem>
           <ProductItem>
-            <WithLocalSvg height={44} asset={Umbrella} />
+            <Umbrella height={44} fill={theme.color.grade7} />
             <ProductName>우산</ProductName>
             <ProductRemainTime>5분 남음</ProductRemainTime>
           </ProductItem>
           <ProductItem>
-            <WithLocalSvg height={44} asset={Umbrella} />
+            <Umbrella height={44} fill={theme.color.grade7} />
             <ProductName>우산</ProductName>
             <ProductRemainTime>5분 남음</ProductRemainTime>
           </ProductItem>
           <ProductItem>
-            <WithLocalSvg height={44} asset={Umbrella} />
+            <Umbrella height={44} fill={theme.color.grade7} />
             <ProductName>우산</ProductName>
             <ProductRemainTime>5분 남음</ProductRemainTime>
           </ProductItem>
