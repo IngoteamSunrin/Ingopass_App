@@ -159,6 +159,7 @@ android {
                 }
             }
         }
+
     }
 
     if (isNewArchitectureEnabled()) {
@@ -255,8 +256,9 @@ dependencies {
 
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
-    implementation project(':react-native-navigation-bar-color')
+
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+    implementation project(':react-native-navigation-bar-color')
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
         exclude group:'com.facebook.fbjni'

@@ -15,8 +15,6 @@ import Products from '@screens/Products'
 import Header from '@components/header'
 import { ImageSourcePropType } from 'react-native'
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
-import { useEffect } from 'react'
-import changeNavigationBarColor from 'react-native-navigation-bar-color'
 import { useRecoilValue } from 'recoil'
 import themeState from '@/store/theme'
 
